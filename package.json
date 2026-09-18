@@ -1,0 +1,12 @@
+{
+  "name": "dominica-sol",
+  "private": true,
+  "description": "Dominica Sol — website. `npm run build` assembles the site into dist/.",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "preview": "npm run build && python3 -m http.server 8000 -d dist"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

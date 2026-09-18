@@ -1,0 +1,18 @@
+{
+  "title": "W&B I",
+  "category": "Claws",
+  "year": "2025",
+  "dimensions": "14.5 × 18 × 9.5 cm",
+  "status": "available",
+  "published": true,
+  "order": 40,
+  "images": [
+    "/assets/web/claws/wb-i/1.jpg",
+    "/assets/web/claws/wb-i/2.jpg",
+    "/assets/web/claws/wb-i/3.jpg",
+    "/assets/web/claws/wb-i/4.jpg",
+    "/assets/web/claws/wb-i/5.jpg",
+    "/assets/web/claws/wb-i/6.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

@@ -17,19 +17,19 @@
 
   var isShop = p.category === 'Earrings';
   var backHref = 'shop.html?c=' + encodeURIComponent(p.category);
-  var backText = p.category;
+  var backText = esc(p.category);
 
   document.title = p.title + ' — Dominica Sol';
 
   var gallery = p.images.map(function (src, i) {
-    return '<img src="' + src + '" alt="' + p.title + ' — view ' + (i + 1) + '"' +
+    return '<img src="' + src + '" alt="' + esc(p.title) + ' — view ' + (i + 1) + '"' +
            (i ? ' loading="lazy"' : '') + '>';
   }).join('');
 
   var sold = p.status === 'sold';
   var cta = sold
     ? '<a href="' + backHref + '">See available pieces →</a>'
-    : '<a href="https://www.instagram.com/domisolmido/" target="_blank" rel="noopener">Enquire on Instagram →</a>';
+    : '<a href="' + SITE.instagram_url + '" target="_blank" rel="noopener">Enquire on Instagram →</a>';
 
   var note = sold
     ? 'This piece has found a home. Similar work can be made to order — get in touch to talk about a commission.'
@@ -41,11 +41,11 @@
       '<p class="caps piece__crumb"><a href="' + backHref + '">← ' + backText + '</a></p>' +
       '<h1 class="piece__title">' + captionOf(p) + '</h1>' +
       '<p class="piece__price">' + (isShop ? 'Price on request' : (sold ? '<span class="status">Sold</span>' : 'Enquire')) + '</p>' +
-      '<p class="piece__desc">' + p.description + '</p>' +
+      '<div class="piece__desc">' + paragraphs(p.description) + '</div>' +
       '<dl class="spec">' +
-        '<div><dt>Year</dt><dd>' + p.year + '</dd></div>' +
-        '<div><dt>' + (isShop ? 'Size' : 'Dimensions') + '</dt><dd>' + p.dimensions + '</dd></div>' +
-        '<div><dt>Series</dt><dd>' + p.category + '</dd></div>' +
+        (p.year ? '<div><dt>Year</dt><dd>' + esc(p.year) + '</dd></div>' : '') +
+        (p.dimensions ? '<div><dt>' + (isShop ? 'Size' : 'Dimensions') + '</dt><dd>' + esc(p.dimensions) + '</dd></div>' : '') +
+        '<div><dt>Series</dt><dd>' + esc(p.category) + '</dd></div>' +
       '</dl>' +
       '<div class="piece__cta">' + cta + '</div>' +
       '<p class="piece__note">' + note + '</p>' +
@@ -53,7 +53,7 @@
 
   var related = document.getElementById('related');
   if (related) {
-    var pool = (isShop ? SHOP : WORKS).filter(function (i) { return i.slug !== p.slug; });
+    var pool = ITEMS.filter(function (i) { return i.slug !== p.slug; });
     pool.sort(function (a, b) { return (b.category === p.category) - (a.category === p.category); });
     related.innerHTML = pool.slice(0, 3).map(cardHTML).join('');
   }

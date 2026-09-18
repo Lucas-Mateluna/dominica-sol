@@ -1,0 +1,16 @@
+{
+  "title": "Nails",
+  "category": "Claws",
+  "year": "2023",
+  "dimensions": "13 × 12 × 10 cm",
+  "status": "available",
+  "published": true,
+  "order": 30,
+  "images": [
+    "/assets/web/claws/nails/1.jpg",
+    "/assets/web/claws/nails/3.jpg",
+    "/assets/web/claws/nails/4.jpg",
+    "/assets/web/claws/nails/2.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

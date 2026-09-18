@@ -1,0 +1,21 @@
+{
+  "title": "Golden",
+  "category": "Teeth",
+  "year": "2025",
+  "dimensions": "24 × 19 × 11 cm",
+  "status": "available",
+  "published": true,
+  "order": 80,
+  "images": [
+    "/assets/web/teeth/golden/1.jpg",
+    "/assets/web/teeth/golden/2.jpg",
+    "/assets/web/teeth/golden/4.jpg",
+    "/assets/web/teeth/golden/5.jpg",
+    "/assets/web/teeth/golden/6.jpg",
+    "/assets/web/teeth/golden/7.jpg",
+    "/assets/web/teeth/golden/3.jpg",
+    "/assets/web/teeth/golden/8.jpg",
+    "/assets/web/teeth/golden/9.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

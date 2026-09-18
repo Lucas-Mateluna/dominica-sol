@@ -1,0 +1,17 @@
+{
+  "title": "A Cuadrillé",
+  "category": "Teeth",
+  "year": "2023",
+  "dimensions": "3 × 7.5 × 10.5 cm",
+  "status": "available",
+  "published": true,
+  "order": 100,
+  "images": [
+    "/assets/web/teeth/a-cuadrille/4.jpg",
+    "/assets/web/teeth/a-cuadrille/5.jpg",
+    "/assets/web/teeth/a-cuadrille/1.jpg",
+    "/assets/web/teeth/a-cuadrille/2.jpg",
+    "/assets/web/teeth/a-cuadrille/3.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

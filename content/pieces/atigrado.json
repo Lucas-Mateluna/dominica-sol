@@ -1,0 +1,21 @@
+{
+  "title": "Atigrado",
+  "category": "Teeth",
+  "year": "2025",
+  "dimensions": "22 × 20 × 9 cm",
+  "status": "available",
+  "published": true,
+  "order": 70,
+  "images": [
+    "/assets/web/teeth/atigrado/1.jpg",
+    "/assets/web/teeth/atigrado/2.jpg",
+    "/assets/web/teeth/atigrado/3.jpg",
+    "/assets/web/teeth/atigrado/4.jpg",
+    "/assets/web/teeth/atigrado/5.jpg",
+    "/assets/web/teeth/atigrado/6.jpg",
+    "/assets/web/teeth/atigrado/7.jpg",
+    "/assets/web/teeth/atigrado/8.jpg",
+    "/assets/web/teeth/atigrado/9.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

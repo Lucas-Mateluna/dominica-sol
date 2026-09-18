@@ -1,0 +1,20 @@
+{
+  "title": "Speckel",
+  "category": "Teeth",
+  "year": "2025",
+  "dimensions": "27 × 20 × 19 cm",
+  "status": "available",
+  "published": true,
+  "order": 90,
+  "images": [
+    "/assets/web/teeth/speckel/6.jpg",
+    "/assets/web/teeth/speckel/5.jpg",
+    "/assets/web/teeth/speckel/7.jpg",
+    "/assets/web/teeth/speckel/8.jpg",
+    "/assets/web/teeth/speckel/2.jpg",
+    "/assets/web/teeth/speckel/3.jpg",
+    "/assets/web/teeth/speckel/4.jpg",
+    "/assets/web/teeth/speckel/1.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

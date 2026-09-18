@@ -1,0 +1,20 @@
+{
+  "title": "Alto Texturado",
+  "category": "Teeth",
+  "year": "2025",
+  "dimensions": "33 × 20 × 7 cm",
+  "status": "available",
+  "published": true,
+  "order": 60,
+  "images": [
+    "/assets/web/teeth/alto-texturado/3.jpg",
+    "/assets/web/teeth/alto-texturado/4.jpg",
+    "/assets/web/teeth/alto-texturado/8.jpg",
+    "/assets/web/teeth/alto-texturado/5.jpg",
+    "/assets/web/teeth/alto-texturado/6.jpg",
+    "/assets/web/teeth/alto-texturado/7.jpg",
+    "/assets/web/teeth/alto-texturado/1.jpg",
+    "/assets/web/teeth/alto-texturado/2.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

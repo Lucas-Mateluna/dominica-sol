@@ -1,0 +1,13 @@
+{
+  "hero_image": "/assets/web/perfil/mood.jpg",
+  "portrait": "/assets/web/perfil/profile.jpg",
+  "about_text": "Placeholder biography. A paragraph about who Dominica is, where she trained, and how she came to clay.\n\nPlaceholder text. A second paragraph about the work itself — the two families of forms she returns to, *Claws* and *Teeth*, and what she is after in each.\n\nPlaceholder text. A third paragraph about the studio, the pace of the work, and what she is making next.",
+  "earrings_image": "/assets/web/shop/earrings-05/1.jpg",
+  "earrings_text": "Placeholder text. The studio's jewellery line — small ceramic pieces on steel and chain, made in short series in the same studio as the larger work.",
+  "exhibitions": [
+    { "year": "2026", "title": "Placeholder exhibition", "details": "Gallery name, City — group show." },
+    { "year": "2025", "title": "Placeholder exhibition", "details": "Gallery name, City — solo show." },
+    { "year": "2024", "title": "Placeholder fair", "details": "Fair name, City." }
+  ],
+  "contact_intro": "For a piece you have seen here, a commission, or anything else — send a message on Instagram."
+}

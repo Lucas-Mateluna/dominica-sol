@@ -1,0 +1,194 @@
+# ==========================================================================
+# Dominica Sol — admin (Sveltia CMS)  ·  https://dominicasol.com/admin/
+# Every save is a commit in the GitHub repo; Netlify then republishes.
+# ==========================================================================
+
+backend:
+  name: github
+  repo: Lucas-Mateluna/dominica-sol
+  branch: main
+  # "Save" keeps the change without republishing the site;
+  # "Save and Publish" puts it online. Keeps Netlify deploys (which are
+  # metered) to one per editing session instead of one per click.
+  skip_ci: true
+
+site_url: https://dominicasol.com
+display_url: https://dominicasol.com
+
+# All photos live under assets/web. New uploads are resized IN THE BROWSER
+# before they are stored: longest side 1800px, WebP. A 20 MB camera file
+# becomes a few hundred KB. (The site build adds the 800px grid thumbnails.)
+media_folder: /assets/web
+public_folder: /assets/web
+media_libraries:
+  default:
+    config:
+      max_file_size: 52428800   # 50 MB, measured on the original file
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1800
+          height: 1800
+
+collections:
+  # ------------------------------------------------------------------ Shop
+  - name: pieces
+    label: Shop — pieces
+    label_singular: Piece
+    description: Everything shown in the Shop — Claws, Teeth and Earrings.
+    folder: /content/pieces
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug: '{{title}}'
+    summary: '{{title}} — {{category}} ({{status}})'
+    thumbnail: images
+    media_folder: /assets/web/pieces
+    public_folder: /assets/web/pieces
+    sortable_fields:
+      fields: [order, title, category, year]
+      default: { field: order, direction: ascending }
+    view_groups:
+      - { label: Category, field: category }
+      - { label: Status, field: status }
+    fields:
+      - { name: title, label: Title, widget: string }
+      - name: category
+        label: Category
+        widget: select
+        options: [Claws, Teeth, Earrings]
+        hint: Decides which filter button the piece appears under.
+      - name: images
+        label: Photos
+        widget: image
+        multiple: true
+        min: 1
+        hint: The first photo is the cover, the second shows when the mouse is over the card. Drag to reorder. Any size is fine — photos are made web-size automatically.
+      - { name: year, label: Year, widget: string, required: false }
+      - name: dimensions
+        label: Dimensions / size
+        widget: string
+        required: false
+        hint: 'For example: 24 × 9 × 17 cm'
+      - name: status
+        label: Status
+        widget: select
+        options:
+          - { label: Available, value: available }
+          - { label: Sold, value: sold }
+        default: available
+      - name: description
+        label: Description
+        widget: text
+        required: false
+        hint: Leave an empty line between paragraphs. Put a word between *asterisks* for italics.
+      - name: medium
+        label: Medium (optional)
+        widget: string
+        required: false
+        hint: 'Shown in the caption, e.g. "ceramic claw". Leave empty to use the usual text for the category.'
+      - name: order
+        label: Position in the shop (optional)
+        widget: number
+        value_type: int
+        required: false
+        hint: Lower numbers come first. Leave empty to put the piece at the very top.
+      - name: published
+        label: Visible on the website
+        widget: boolean
+        default: true
+        hint: Switch off to hide the piece without deleting it.
+
+  # -------------------------------------------------------------- Projects
+  - name: projects
+    label: Projects
+    label_singular: Project
+    description: The Projects page. It stays hidden until "Show the Projects page" is switched on in Site → Settings. Until then you can preview it at dominicasol.com/projects.html
+    folder: /content/projects
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug: '{{title}}'
+    summary: '{{title}} — {{year}}'
+    thumbnail: images
+    media_folder: /assets/web/projects
+    public_folder: /assets/web/projects
+    sortable_fields:
+      fields: [order, title, year]
+      default: { field: order, direction: ascending }
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: year, label: Year, widget: string, required: false }
+      - { name: place, label: Place / context, widget: string, required: false, hint: 'For example: Gallery name, Berlin' }
+      - name: text
+        label: Text
+        widget: text
+        required: false
+        hint: Leave an empty line between paragraphs. Put a word between *asterisks* for italics.
+      - name: images
+        label: Photos
+        widget: image
+        multiple: true
+        required: false
+        hint: Any size is fine — photos are made web-size automatically.
+      - name: order
+        label: Position on the page (optional)
+        widget: number
+        value_type: int
+        required: false
+        hint: Lower numbers come first. Leave empty to put the project at the very top.
+      - name: published
+        label: Visible on the Projects page
+        widget: boolean
+        default: true
+
+  # ------------------------------------------------------------------ Site
+  - name: site
+    label: Site
+    media_folder: /assets/web/site
+    public_folder: /assets/web/site
+    files:
+      - name: home
+        label: Home page — About, exhibitions, contact text
+        file: /content/site/home.json
+        format: json
+        fields:
+          - { name: hero_image, label: Large photo at the top, widget: image }
+          - { name: portrait, label: Portrait, widget: image }
+          - name: about_text
+            label: About text
+            widget: text
+            hint: Leave an empty line between paragraphs. Put a word between *asterisks* for italics.
+          - { name: earrings_image, label: Earrings photo, widget: image }
+          - { name: earrings_text, label: Earrings text, widget: text }
+          - name: exhibitions
+            label: Selected exhibitions
+            label_singular: Exhibition
+            widget: list
+            required: false
+            summary: '{{year}} — {{title}}'
+            fields:
+              - { name: year, label: Year, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: details, label: Details, widget: string, required: false, hint: 'Gallery name, City — group show.' }
+          - { name: contact_intro, label: Contact — intro sentence, widget: text }
+      - name: settings
+        label: Settings — Instagram, studio, Projects page
+        file: /content/site/settings.json
+        format: json
+        fields:
+          - { name: instagram_url, label: Instagram link, widget: string }
+          - { name: instagram_handle, label: Instagram name, widget: string, hint: 'For example: @domisolmido' }
+          - { name: studio_address, label: Studio address, widget: string, required: false, hint: Leave empty to hide this line. }
+          - { name: visits, label: Visits, widget: string, required: false, hint: Leave empty to hide this line. }
+          - name: show_projects
+            label: Show the Projects page
+            widget: boolean
+            default: false
+            hint: While this is off, "Projects" is not in the menu and the page is a private preview at dominicasol.com/projects.html. Switch it on to publish it.

@@ -1,0 +1,11 @@
+{
+  "title": "Example project",
+  "year": "2026",
+  "place": "City, Country",
+  "published": true,
+  "order": 10,
+  "images": [
+    "/assets/web/perfil/mood.jpg"
+  ],
+  "text": "Placeholder text. Describe the project here — what it was, who it was with, where it was shown.\n\nA second paragraph if needed. Put a word between *asterisks* to make it italic."
+}

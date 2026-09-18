@@ -1,0 +1,17 @@
+{
+  "title": "Blue & White",
+  "category": "Claws",
+  "year": "2023",
+  "dimensions": "Dimensions on request",
+  "status": "sold",
+  "published": true,
+  "order": 20,
+  "images": [
+    "/assets/web/claws/blue-white/1.jpg",
+    "/assets/web/claws/blue-white/2.jpg",
+    "/assets/web/claws/blue-white/4.jpg",
+    "/assets/web/claws/blue-white/3.jpg",
+    "/assets/web/claws/blue-white/5.jpg"
+  ],
+  "description": "Placeholder description. A pair — one raw, one glazed deep blue — shown together on turned bases."
+}

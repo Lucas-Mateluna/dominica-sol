@@ -1,0 +1,16 @@
+{
+  "title": "Black",
+  "category": "Claws",
+  "year": "2025",
+  "dimensions": "24 × 9 × 17 cm",
+  "status": "available",
+  "published": true,
+  "order": 10,
+  "images": [
+    "/assets/web/claws/black/1.jpg",
+    "/assets/web/claws/black/2.jpg",
+    "/assets/web/claws/black/3.jpg",
+    "/assets/web/claws/black/4.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece — the clay body, the firing, what it is doing."
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Texturas Flores I",
+  "category": "Teeth",
+  "year": "2023",
+  "dimensions": "16 × 9.5 × 9.5 cm",
+  "status": "available",
+  "published": true,
+  "order": 110,
+  "images": [
+    "/assets/web/teeth/texturas-flores-i/1.jpg",
+    "/assets/web/teeth/texturas-flores-i/2.jpg",
+    "/assets/web/teeth/texturas-flores-i/3.jpg"
+  ],
+  "description": "Placeholder description. Add a few lines about this piece."
+}

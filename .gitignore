@@ -1,3 +1,9 @@
 .DS_Store
 node_modules
+dist
 .wrangler
+# grid thumbnails are made by the build
+assets/**/*-t.jpg
+assets/**/*-t.jpeg
+assets/**/*-t.png
+assets/**/*-t.webp
