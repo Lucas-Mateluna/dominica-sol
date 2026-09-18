@@ -15,9 +15,11 @@ backend:
 site_url: https://dominicasol.com
 display_url: https://dominicasol.com
 
-# All photos live under assets/web. New uploads are resized IN THE BROWSER
-# before they are stored: longest side 1800px, WebP. A 20 MB camera file
-# becomes a few hundred KB. (The site build adds the 800px grid thumbnails.)
+# All photos live under assets/web — one folder for everything, so the photos
+# that were already on the site show up in the admin too. New uploads are
+# resized IN THE BROWSER before they are stored: longest side 1800px, WebP.
+# A 20 MB camera file becomes a few hundred KB. (The site build then adds the
+# 800px grid thumbnails and shrinks anything oversized that slipped through.)
 media_folder: /assets/web
 public_folder: /assets/web
 media_libraries:
@@ -47,8 +49,6 @@ collections:
     slug: '{{title}}'
     summary: '{{title}} — {{category}} ({{status}})'
     thumbnail: images
-    media_folder: /assets/web/pieces
-    public_folder: /assets/web/pieces
     sortable_fields:
       fields: [order, title, category, year]
       default: { field: order, direction: ascending }
@@ -117,8 +117,6 @@ collections:
     slug: '{{title}}'
     summary: '{{title}} — {{year}}'
     thumbnail: images
-    media_folder: /assets/web/projects
-    public_folder: /assets/web/projects
     sortable_fields:
       fields: [order, title, year]
       default: { field: order, direction: ascending }
@@ -151,8 +149,6 @@ collections:
   # ------------------------------------------------------------------ Site
   - name: site
     label: Site
-    media_folder: /assets/web/site
-    public_folder: /assets/web/site
     files:
       - name: home
         label: Home page — About, exhibitions, contact text

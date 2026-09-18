@@ -38,7 +38,8 @@ content/pieces/<slug>.json    one file per piece (the file name is the URL slug)
 content/projects/<slug>.json  one file per project
 content/site/home.json        About text, photos, exhibitions, contact intro
 content/site/settings.json    Instagram, studio address, show_projects switch
-assets/web/                   all photos (thumbnails `*-t.*` are made by the build, not stored)
+assets/web/                   all photos — one folder, uploads land here too
+                              (thumbnails `*-t.*` are made by the build, not stored)
 admin/config.yml              the admin's fields — edit this to add a field or a category
 scripts/build.js              the build
 css/style.css                 all styling; colours, font, spacing in :root at the top
