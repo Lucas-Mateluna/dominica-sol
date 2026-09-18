@@ -1,0 +1,383 @@
+/* ==========================================================================
+   Dominica Sol — website
+   Design system modeled on the reference: pure white ground, one geometric
+   sans, letterspaced caps, centered axis, single warm accent.
+   ========================================================================== */
+
+/* --- Tokens ------------------------------------------------------------- */
+:root {
+  --white:  #ffffff;
+  --ink:    #1a1a1a;
+  --grey:   #9a9a9a;
+  --line:   #e8e8e8;
+  --accent: #e65c25;          /* vermilion accent */
+
+  --font: "Jost", "Futura", "Century Gothic", "Helvetica Neue", sans-serif;
+
+  --track: .14em;             /* standard letterspacing for caps */
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --colgap: clamp(1.5rem, 3.2vw, 3.25rem);
+  --rowgap: clamp(4rem, 9vw, 9rem);
+
+  --ease: cubic-bezier(.25, .6, .3, 1);
+}
+
+/* --- Reset -------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+
+/* --- Type --------------------------------------------------------------- */
+.caps {
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+.caps--grey { color: var(--grey); }
+.accent { color: var(--accent); }
+
+a.hover-accent { transition: color .25s var(--ease); }
+a.hover-accent:hover { color: var(--accent); }
+
+/* --- Layout ------------------------------------------------------------- */
+.wrap { padding-inline: var(--gutter); max-width: 1680px; margin-inline: auto; }
+
+/* --- Header — centered axis --------------------------------------------- */
+.site-header { position: relative; padding: clamp(1.75rem, 4vw, 3rem) var(--gutter) 0; }
+.brand {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 500;
+  letter-spacing: .04em;
+  line-height: 1;
+  text-align: center;
+}
+.brand__sub {
+  margin: .55rem 0 0;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.header-aside {
+  position: absolute;
+  top: clamp(1.85rem, 4.1vw, 3.15rem);
+  right: var(--gutter);
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.header-aside:hover { color: var(--ink); }
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 2.6vw, 2.6rem);
+  padding-block: clamp(2rem, 4.5vw, 3.75rem) 0;
+}
+.nav a {
+  font-size: 12.5px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  transition: color .25s var(--ease);
+}
+.nav a:hover { color: var(--accent); }
+.nav a[aria-current="page"] { color: var(--ink); }
+
+.nav-toggle { display: none; }
+@media (max-width: 700px) {
+  .header-aside { position: static; display: block; width: fit-content; margin: 1rem auto 0; }
+}
+
+/* --- Category filter row (work) ------------------------------------------ */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .6rem clamp(1.1rem, 2.4vw, 2.2rem);
+  padding-block: clamp(2.5rem, 5vw, 4.25rem) clamp(2.75rem, 5.5vw, 4.5rem);
+}
+.filters button {
+  font-size: 12.5px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color .25s var(--ease);
+}
+.filters button:hover { color: var(--ink); }
+.filters button[aria-pressed="true"] { color: var(--ink); }
+
+/* --- Product grid -------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--colgap);
+  row-gap: var(--rowgap);
+  padding-bottom: clamp(5rem, 10vw, 10rem);
+}
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .grid { grid-template-columns: 1fr; row-gap: 4rem; } }
+
+.card { display: block; }
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+.card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: opacity .45s var(--ease);
+}
+.card__media img + img { position: absolute; inset: 0; opacity: 0; }
+.card:hover .card__media img + img { opacity: 1; }
+
+.card__body { padding-top: 1.1rem; }
+.card__title {
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  line-height: 1.75;
+  transition: color .25s var(--ease);
+}
+.card:hover .card__title { color: var(--accent); }
+.card__price {
+  font-size: 12px;
+  letter-spacing: .08em;
+  margin-top: .15rem;
+}
+.status { color: var(--accent); }
+.card--sold .card__media img { opacity: .85; }
+
+.grid__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--grey);
+  padding-block: 4rem;
+}
+
+.count { text-align: center; color: var(--grey); }
+
+/* --- Page intro (non-shop pages) ----------------------------------------- */
+.page-intro {
+  text-align: center;
+  max-width: 62ch;
+  margin-inline: auto;
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+}
+.page-intro h1 {
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+}
+.page-intro p { color: var(--grey); margin: 1.1rem 0 0; }
+
+/* --- Hero (home) ---------------------------------------------------------- */
+.hero { position: relative; margin-top: clamp(1.75rem, 4vw, 3rem); }
+.hero__media { height: min(78vh, 860px); background: #f4f4f4; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Product detail ------------------------------------------------------- */
+.piece {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(5rem, 10vw, 9rem);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .piece { grid-template-columns: minmax(0, 1.05fr) minmax(0, .8fr); }
+  .piece__info { position: sticky; top: 2.5rem; }
+}
+.piece__gallery { display: grid; gap: var(--colgap); }
+.piece__gallery img { width: 100%; height: auto; background: #f4f4f4; }
+
+.piece__info { text-align: left; }
+.piece__crumb { margin-bottom: 2rem; }
+.piece__crumb a { color: var(--accent); }
+.piece__crumb a:hover { color: var(--ink); }
+.piece__title {
+  font-size: 13px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+.piece__price { font-size: 13px; letter-spacing: .08em; margin: .4rem 0 2rem; }
+.piece__desc { color: var(--grey); max-width: 46ch; }
+
+.spec { margin-top: 2.5rem; border-top: 1px solid var(--line); }
+.spec div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: .75rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.spec dt { color: var(--grey); text-transform: uppercase; letter-spacing: var(--track); font-size: 11px; }
+.spec dd { margin: 0; text-align: right; }
+
+.piece__cta { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.piece__cta a {
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color .25s var(--ease);
+}
+.piece__cta a:hover { color: var(--ink); }
+.piece__note { margin-top: 2rem; font-size: 12px; color: var(--grey); max-width: 42ch; }
+
+.related-head {
+  text-align: center;
+  padding-block: 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+/* --- Editorial (home sections) -------------------------------------------- */
+.strip { padding-block: clamp(4rem, 9vw, 8rem) 0; }
+.strip:last-of-type { padding-bottom: clamp(5rem, 10vw, 9rem); }
+.strip__head { text-align: center; margin-bottom: clamp(2rem, 4.5vw, 3.5rem); }
+.strip__head .caps a:hover { color: var(--ink); }
+
+.split {
+  display: grid;
+  gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 860px) { .split { grid-template-columns: 1fr 1fr; } }
+.split img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #f4f4f4; }
+.split__text { max-width: 44ch; }
+.split__text p { color: var(--grey); margin: 1rem 0 1.75rem; }
+
+/* --- Contact / forms --------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+@media (min-width: 860px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-grid--single { grid-template-columns: 1fr !important; max-width: 520px; gap: 2.5rem; }
+.contact-cta { text-align: center; }
+
+.field { display: grid; gap: .45rem; margin-bottom: 1.4rem; text-align: left; }
+.field label { font-size: 11px; letter-spacing: var(--track); text-transform: uppercase; color: var(--grey); }
+.field input, .field textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: .55rem 0;
+  outline: none;
+  border-radius: 0;
+  transition: border-color .25s var(--ease);
+}
+.field input:focus, .field textarea:focus { border-color: var(--ink); }
+.field textarea { resize: vertical; min-height: 130px; }
+.submit {
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color .25s var(--ease);
+}
+.submit:hover { color: var(--ink); }
+
+/* --- Footer ------------------------------------------------------------------- */
+.site-footer { padding: clamp(3rem, 6vw, 5rem) var(--gutter) clamp(2.5rem, 5vw, 4rem); }
+.site-footer__links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem clamp(1.25rem, 2.6vw, 2.4rem);
+}
+.site-footer__links a {
+  font-size: 12px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  transition: color .25s var(--ease);
+}
+.site-footer__links a:hover { color: var(--accent); }
+.colophon {
+  text-align: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  font-size: 11px;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+
+/* --- About page ------------------------------------------------------------- */
+.about-split { padding-block: clamp(3.5rem, 8vw, 7rem) 0; }
+.about-split img { aspect-ratio: 4/5; }
+@media (min-width: 860px) {
+  .about-split--flip img { order: 2; }
+  .about-split--flip .split__text { order: 1; justify-self: end; }
+}
+.about-split .split__text p:last-of-type { margin-bottom: 1.75rem; }
+
+.exhibitions {
+  max-width: 880px;
+  margin: clamp(4rem, 9vw, 8rem) auto 0;
+  text-align: center;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+.exhibitions > .caps { margin-bottom: 2rem; }
+.entry {
+  text-align: center;
+  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-top: 1px solid var(--line);
+}
+.exhibitions .entry:last-child { border-bottom: 1px solid var(--line); }
+.entry h3 { font-size: 12.5px; font-weight: 400; letter-spacing: var(--track); text-transform: uppercase; }
+.entry .when { color: var(--accent); font-size: 11px; letter-spacing: var(--track); text-transform: uppercase; }
+.entry p { color: var(--grey); max-width: 52ch; margin: .75rem auto 0; }
+
+.contact-section { border-top: 1px solid var(--line); }
+
+/* --- Piece page ------------------------------------------------------------- */
+.piece__missing {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-block: 4rem;
+}
+.piece__missing p:nth-of-type(2) { color: var(--grey); margin: 1rem 0 2rem; }
+
+/* --- Utilities ------------------------------------------------------------------ */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.js .reveal { opacity: 0; transform: translateY(12px); }
+.js .reveal.is-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
