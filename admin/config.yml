@@ -48,7 +48,11 @@ collections:
     identifier_field: title
     slug: '{{title}}'
     summary: '{{title}} — {{category}} ({{status}})'
-    thumbnail: images
+    # Photos is a list, so the grid thumbnail has to point at the first photo
+    # inside it, not at the field itself.
+    thumbnail: ['images.*', 'images.0']
+    editor:
+      preview: false
     sortable_fields:
       fields: [order, title, category, year]
       default: { field: order, direction: ascending }
@@ -116,7 +120,11 @@ collections:
     identifier_field: title
     slug: '{{title}}'
     summary: '{{title}} — {{year}}'
-    thumbnail: images
+    # Photos is a list, so the grid thumbnail has to point at the first photo
+    # inside it, not at the field itself.
+    thumbnail: ['images.*', 'images.0']
+    editor:
+      preview: false
     sortable_fields:
       fields: [order, title, year]
       default: { field: order, direction: ascending }
